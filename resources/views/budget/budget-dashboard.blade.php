@@ -12,7 +12,7 @@
                     <div class="p-6">
                         <div class="flex items-center">
                             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">
-                                <a href=""> Tilføj indtægter </a>
+                                <a href="{{ url('/budget/income') }}"> Tilføj indtægter </a>
                             </div>
                         </div>
                         <div class="ml-12">

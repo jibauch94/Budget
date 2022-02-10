@@ -9,6 +9,16 @@ class Income extends Model
 {
     use HasFactory;
 
+        /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'data',
+    ];
+
     public function user() {
         return $this->belongsTo(User::class);
     }
