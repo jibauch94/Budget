@@ -21,6 +21,26 @@ Route::get('/budget/budget-dashboard', function () {
     return view('budget/budget-dashboard');
 });
 
+Route::get('/budget/income', function () {
+    return view('budget/income');
+});
+
+Route::get('/budget/fixedCosts', function () {
+    return view('budget/fixedCosts');
+});
+
+Route::get('/budget/investments', function () {
+    return view('budget/investments');
+});
+
+Route::get('/budget/savings', function () {
+    return view('budget/savings');
+});
+
+Route::get('/budget/spendings', function () {
+    return view('budget/spendings');
+});
+
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
