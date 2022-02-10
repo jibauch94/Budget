@@ -19,7 +19,7 @@
                     <div class="p-6">
                         <div class="flex items-center">
                             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">
-                                <a href=""> Opret budget </a>
+                                <a href="{{ url('budget/budget-dashboard') }}"> Opret budget </a>
                             </div>
                         </div>
                         <div class="ml-12">
@@ -31,7 +31,7 @@
                     <div class="p-6">
                         <div class="flex items-center">
                             <div class="ml-4 text-lg text-gray-600 leading-7 font-semibold">
-                                <a href=""> Opret budget </a>
+                                <a href=""> Se budget </a>
                             </div>
                         </div>
                         <div class="ml-12">
