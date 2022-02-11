@@ -1,2 +1,2 @@
 # Budget
-Budget for your finances, developed in Laravel
+Budget for your private finances, developed in Laravel
