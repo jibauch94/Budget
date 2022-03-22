@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Income;
+Use Carbon\Carbon;
 
 class IncomeSeeder extends Seeder
 {
@@ -14,9 +15,14 @@ class IncomeSeeder extends Seeder
      */
     public function run()
     {
+        $from = '2022-01-01';
+        $to = '2022-12-31';
         Income::create([
             "user_id" => "1",
-            "data" => "{'income':{'name': 'Løn','value': '30000'}}",
+            "description" => "løn",
+            "amount" => "100",
+            "valid_from" => Carbon::createFromFormat('Y-m-d', $from),
+            "valid_to" => Carbon::createFromFormat('Y-m-d', $to),
         ]);
     }
 }

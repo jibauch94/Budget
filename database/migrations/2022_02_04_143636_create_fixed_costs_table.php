@@ -15,6 +15,11 @@ class CreateFixedCostsTable extends Migration
     {
         Schema::create('fixed_costs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->text('description');
+            $table->float('amount');
+            $table->dateTime('valid_from');
+            $table->dateTime('valid_to');
             $table->timestamps();
         });
     }

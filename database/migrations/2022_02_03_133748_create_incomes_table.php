@@ -15,8 +15,11 @@ class CreateIncomesTable extends Migration
     {
         Schema::create('incomes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->text('data');
+            $table->foreignId('user_id')->references('id')->on('users');
+            $table->text('description');
+            $table->float('amount');
+            $table->dateTime('valid_from');
+            $table->dateTime('valid_to');
             $table->timestamps();
         });
     }
