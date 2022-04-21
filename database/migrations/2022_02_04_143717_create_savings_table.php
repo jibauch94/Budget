@@ -15,7 +15,7 @@ class CreateSavingsTable extends Migration
     {
         Schema::create('savings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->references('id')->on('users');
             $table->text('description');
             $table->float('amount');
             $table->dateTime('valid_from');
