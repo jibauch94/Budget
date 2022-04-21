@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Investments extends Model
 {
     use HasFactory;
+
+            /**
+     * The attributes that are mass assignable.
+     *
+     * @var string[]
+     */
+    protected $fillable = [
+        'user_id',
+        'description',
+        'amount',
+        'valid_from',
+        'valid_to',
+    ];
+
+    public function user() {
+        return $this->belongsTo(User::class);
+    }
 }

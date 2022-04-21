@@ -16,7 +16,10 @@ class Income extends Model
      */
     protected $fillable = [
         'user_id',
-        'data',
+        'description',
+        'amount',
+        'valid_from',
+        'valid_to',
     ];
 
     public function user() {
