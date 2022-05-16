@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\IncomeController;
+use App\Models\Income;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -17,3 +19,5 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::apiResource('income', IncomeController::class);
