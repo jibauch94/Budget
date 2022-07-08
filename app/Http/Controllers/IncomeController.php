@@ -17,7 +17,7 @@ class IncomeController extends Controller
     {
         $incomes = Income::all();
 
-        return response()->json($incomes);
+        return $incomes;
     }
 
     /**
@@ -36,7 +36,7 @@ class IncomeController extends Controller
             'valid_to' => 'required',
           ]);
 
-        $newIncome = new Income([
+        $newIncome = Income::create([
             'user_id' => $request->get('user_id'),
             'description' => $request->get('description'),
             'amount' => $request->get('amount'),
@@ -44,9 +44,7 @@ class IncomeController extends Controller
             'valid_to' => $request->get('valid_to'),
         ]);
 
-        $newIncome->save();
-
-        return response()->json($newIncome);
+        return $newIncome;
     }
 
     /**
@@ -55,11 +53,9 @@ class IncomeController extends Controller
      * @param  \App\Models\Income  $income
      * @return \Illuminate\Http\Response
      */
-    public function show($income)
+    public function show(Income $income)
     {
-        $income = Income::findOrFail($income);
-
-        return response()->json($income);
+        return $income;
     }
 
     /**
@@ -87,7 +83,7 @@ class IncomeController extends Controller
 
         $income->save();
 
-        return response()->json($income);
+        return $income;
     }
 
     /**
@@ -98,9 +94,8 @@ class IncomeController extends Controller
      */
     public function destroy(Income $income)
     {
-        $income = Income::findOrFail($income);
         $income->delete();
 
-        return response()->json($income::all());
+        return $income::all();
     }
 }
