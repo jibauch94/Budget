@@ -1,7 +1,10 @@
 <?php
 
+use App\Http\Controllers\FixedCostsController;
 use App\Http\Controllers\IncomeController;
-use App\Models\Income;
+use App\Http\Controllers\InvestmentsController;
+use App\Http\Controllers\SavingsController;
+use App\Http\Controllers\SpendingsController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,3 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('income', IncomeController::class);
+Route::apiResource('fixedCosts', FixedCostsController::class);
+Route::apiResource('investment', InvestmentsController::class);
+Route::apiResource('savings', SavingsController::class);
+Route::apiResource('spendings', SpendingsController::class);
