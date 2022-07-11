@@ -15,17 +15,7 @@ class SpendingsController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Spendings::all();
     }
 
     /**
@@ -36,7 +26,23 @@ class SpendingsController extends Controller
      */
     public function store(StoreSpendingsRequest $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'valid_from' => 'required',
+            'valid_to' => 'required',
+          ]);
+
+        $newSpending = Spendings::create([
+            'user_id' => $request->get('user_id'),
+            'description' => $request->get('description'),
+            'amount' => $request->get('amount'),
+            'valid_from' => $request->get('valid_from'),
+            'valid_to' => $request->get('valid_to'),
+        ]);
+
+        return $newSpending;
     }
 
     /**
@@ -47,18 +53,7 @@ class SpendingsController extends Controller
      */
     public function show(Spendings $spendings)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Spendings  $spendings
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Spendings $spendings)
-    {
-        //
+        return $spendings;
     }
 
     /**
@@ -70,7 +65,23 @@ class SpendingsController extends Controller
      */
     public function update(UpdateSpendingsRequest $request, Spendings $spendings)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'valid_from' => 'required',
+            'valid_to' => 'required',
+          ]);
+
+            $spendings->user_id = $request->get('user_id');
+            $spendings->description = $request->get('description');
+            $spendings->amount = $request->get('amount');
+            $spendings->valid_from = $request->get('valid_from');
+            $spendings->valid_to = $request->get('valid_to');
+
+        $spendings->save();
+
+        return $spendings;
     }
 
     /**
@@ -81,6 +92,6 @@ class SpendingsController extends Controller
      */
     public function destroy(Spendings $spendings)
     {
-        //
+        return $spendings->delete();
     }
 }

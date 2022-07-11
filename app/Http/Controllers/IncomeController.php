@@ -15,9 +15,7 @@ class IncomeController extends Controller
      */
     public function index()
     {
-        $incomes = Income::all();
-
-        return $incomes;
+        return Income::all();
     }
 
     /**
@@ -94,8 +92,6 @@ class IncomeController extends Controller
      */
     public function destroy(Income $income)
     {
-        $income->delete();
-
-        return $income::all();
+        return $income->delete();
     }
 }

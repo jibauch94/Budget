@@ -15,17 +15,7 @@ class SavingsController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return Savings::all();
     }
 
     /**
@@ -36,7 +26,23 @@ class SavingsController extends Controller
      */
     public function store(StoreSavingsRequest $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'valid_from' => 'required',
+            'valid_to' => 'required',
+          ]);
+
+        $newSaving = Savings::create([
+            'user_id' => $request->get('user_id'),
+            'description' => $request->get('description'),
+            'amount' => $request->get('amount'),
+            'valid_from' => $request->get('valid_from'),
+            'valid_to' => $request->get('valid_to'),
+        ]);
+
+        return $newSaving;
     }
 
     /**
@@ -47,18 +53,7 @@ class SavingsController extends Controller
      */
     public function show(Savings $savings)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Savings  $savings
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Savings $savings)
-    {
-        //
+        return $savings;
     }
 
     /**
@@ -70,7 +65,23 @@ class SavingsController extends Controller
      */
     public function update(UpdateSavingsRequest $request, Savings $savings)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'valid_from' => 'required',
+            'valid_to' => 'required',
+          ]);
+
+            $savings->user_id = $request->get('user_id');
+            $savings->description = $request->get('description');
+            $savings->amount = $request->get('amount');
+            $savings->valid_from = $request->get('valid_from');
+            $savings->valid_to = $request->get('valid_to');
+
+        $savings->save();
+
+        return $savings;
     }
 
     /**
@@ -81,6 +92,6 @@ class SavingsController extends Controller
      */
     public function destroy(Savings $savings)
     {
-        //
+        return $savings->delete();
     }
 }

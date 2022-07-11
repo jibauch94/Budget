@@ -15,17 +15,7 @@ class FixedCostsController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return FixedCosts::all();
     }
 
     /**
@@ -36,7 +26,23 @@ class FixedCostsController extends Controller
      */
     public function store(StoreFixedCostsRequest $request)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'valid_from' => 'required',
+            'valid_to' => 'required',
+        ]);
+
+        $newFixedCost = FixedCosts::create([
+            'user_id' => $request->get('user_id'),
+            'description' => $request->get('description'),
+            'amount' => $request->get('amount'),
+            'valid_from' => $request->get('valid_from'),
+            'valid_to' => $request->get('valid_to'),
+        ]);
+
+        return $newFixedCost;
     }
 
     /**
@@ -47,18 +53,7 @@ class FixedCostsController extends Controller
      */
     public function show(FixedCosts $fixedCosts)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\FixedCosts  $fixedCosts
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(FixedCosts $fixedCosts)
-    {
-        //
+        return $fixedCosts;
     }
 
     /**
@@ -70,7 +65,23 @@ class FixedCostsController extends Controller
      */
     public function update(UpdateFixedCostsRequest $request, FixedCosts $fixedCosts)
     {
-        //
+        $request->validate([
+            'user_id' => 'required',
+            'description' => 'required',
+            'amount' => 'required',
+            'valid_from' => 'required',
+            'valid_to' => 'required',
+          ]);
+
+            $fixedCosts->user_id = $request->get('user_id');
+            $fixedCosts->description = $request->get('description');
+            $fixedCosts->amount = $request->get('amount');
+            $fixedCosts->valid_from = $request->get('valid_from');
+            $fixedCosts->valid_to = $request->get('valid_to');
+
+        $fixedCosts->save();
+
+        return $fixedCosts;
     }
 
     /**
@@ -81,6 +92,6 @@ class FixedCostsController extends Controller
      */
     public function destroy(FixedCosts $fixedCosts)
     {
-        //
+        return $fixedCosts->delete();
     }
 }
