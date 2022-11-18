@@ -18,8 +18,9 @@ class IncomeSeeder extends Seeder
         $from = '2022-01-01';
         $to = '2022-12-31';
         Income::create([
-            "user_id" => "1",
-            "description" => "løn",
+            "budget_id" => "1",
+            "category_id" => "1",
+            "sub_category_id" => "1",
             "amount" => "100",
             "valid_from" => Carbon::createFromFormat('Y-m-d', $from),
             "valid_to" => Carbon::createFromFormat('Y-m-d', $to),

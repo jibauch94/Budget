@@ -15,8 +15,9 @@ class CreateSpendingsTable extends Migration
     {
         Schema::create('spendings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->text('description');
+            $table->foreignId('budget_id')->references('id')->on('budgets');
+            $table->foreignId('category_id')->references('id')->on('categories');
+            $table->foreignId('sub_category_id')->references('id')->on('sub_categories');
             $table->float('amount');
             $table->dateTime('valid_from');
             $table->dateTime('valid_to');
